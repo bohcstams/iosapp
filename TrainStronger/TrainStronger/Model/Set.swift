@@ -10,10 +10,10 @@ import SwiftData
 
 @Model
 final class Set{
-    var weight : Int
+    var weight : Double
     var repetitions : Int
     
-    init(weight : Int, reps: Int){
+    init(weight : Double, reps: Int){
         self.weight = weight
         self.repetitions = reps
     }

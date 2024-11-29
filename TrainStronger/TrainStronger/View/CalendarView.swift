@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CalenarView: View {
+struct CalendarView: View {
     @State private var selectedDate = Date()
 
         var body: some View {
@@ -38,5 +38,5 @@ struct CalenarView: View {
 }
 
 #Preview {
-    CalenarView()
+    CalendarView()
 }
