@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CalendarView: View {
-    @State private var selectedDate = Date()
+    @Binding var selectedDate : Date
 
         var body: some View {
             VStack{
@@ -22,12 +22,8 @@ struct CalendarView: View {
                 )
                 .datePickerStyle(GraphicalDatePickerStyle())
                 .padding()
-                
-                Text("Selected date: \(formattedDate)")
-                    .padding()
             }
             .padding()
-            Spacer()
         }
         
         var formattedDate: String {
@@ -37,6 +33,9 @@ struct CalendarView: View {
         }
 }
 
-#Preview {
-    CalendarView()
+struct CalendarView_Preview : PreviewProvider{
+    @State static var date = Date()
+    static var previews: some View {
+        CalendarView(selectedDate: $date)
+    }
 }

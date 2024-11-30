@@ -9,67 +9,21 @@ import SwiftUI
 
 struct SetView: View {
     
-    @State var numberOfSet: Int
-    @State var repetitions: Int
+    @State var repetitions: Double
     @State var weight: Double
-    @State var showModal : Bool = false
     
-    init(numberOfSet: Int, reps: Int, weight: Double){
-        self.numberOfSet = numberOfSet
+    init(reps: Double, weight: Double){
         self.repetitions = reps
         self.weight = weight
     }
     
     var body: some View {
-        ZStack{
-            HStack{
-                Text("\(numberOfSet)")
-                    .bold()
-                    .padding()
-                Spacer()
-                Text("\(repetitions)")
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray, lineWidth: 2)
-                    )
-                    .onTapGesture {
-                        withAnimation(.easeIn){
-                            showModal = true
-                        }
-                    }
-                Spacer()
-                Text(formatDouble(weight))
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray, lineWidth: 2)
-                    )
-                    .onTapGesture {
-                        withAnimation(.easeIn){
-                            showModal = true
-                        }
-                    }
-            }
-            .padding()
-            
-            if showModal{
-                Color.black.opacity(0.4)
-                .ignoresSafeArea()
-                .onTapGesture {
-                    withAnimation(.easeOut){
-                        showModal = false
-                    }
-                }
-                
-                EditSetView(repetitions: $repetitions, weight: $weight)
-                    .transition(.opacity)
-            }
+        HStack{
+            IncDecTextView(width: 30, amount: 1, value: $repetitions)
+                .padding(.trailing)
+            IncDecTextView(width: 50, amount: 2.5, value: $weight)
         }
+        .padding(.horizontal)
     }
     
     func formatDouble(_ value: Double) -> String {
@@ -106,5 +60,5 @@ struct EditSetView : View{
 }
 
 #Preview {
-    SetView(numberOfSet: 1, reps: 15, weight: 35)
+    SetView(reps: 15, weight: 95)
 }

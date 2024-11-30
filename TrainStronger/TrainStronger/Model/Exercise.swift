@@ -7,12 +7,23 @@
 
 import Foundation
 
-class Exercise{
+@Observable
+class Exercise : Identifiable{
     var name : String
     var sets : [Set]
+
     
     init(name : String){
         self.name = name
         self.sets = []
+    }
+    
+    init(name : String, sets : [Set]){
+        self.name = name
+        self.sets = sets
+    }
+    
+    func addNewSet(set: Set){
+        sets.append(set)
     }
 }

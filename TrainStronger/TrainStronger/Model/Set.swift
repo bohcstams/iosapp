@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import SwiftData
 
-@Model
-final class Set{
+@Observable
+class Set: Identifiable{
+    let id: UUID = UUID()
     var weight : Double
     var repetitions : Int
     
