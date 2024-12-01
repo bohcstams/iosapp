@@ -24,6 +24,27 @@
         "exerciseTypes" : ["Reverse Barbell Curl", "Reverse Dumbbell Curl", "Wrist Curl"]
     },
     {
-        
+        "name" : "Core",
+        "exerciseTypes" : ["Barbell Front Squat", "Cable Crunch", "Clean", "Clean & Press", "Crunch", "Deadlift", "Farmer Carry", "Glute Ham Raise", "Goblet Squat", "Good Morning", "Leg Raise", "Military Press", "Romanian Deadlift", "Russian Twist", "Sit Up", "Sled Push", "Snatch", "Sumo Deadlift"]
+    },
+    {
+        "name" : "Quads",
+        "exerciseTypes" : ["Barbell Back Squat", "Barberll Front Squat", "Barbell Lunge", "Bodyweight Pistol Squat", "Bulgarian Split Squat", "Clean", "Clean & Press", "Deadlift", "Dumbell Lunge", "Goblet Squat", "Hack Squat", "Leg Extension", "Leg Press", "Lunge", "Pendulum Squat", "Single-leg Leg Press", "Sitting Leg Press", "Sled Push", "Smith Machine Squat", "Snatch", "Sumo Deadlift"]
+    },
+    {
+        "name" : "Hamstrings",
+        "exerciseTypes" : ["Barbell Back Squat", "Barbell Lunge", "Barbell RDL", "Bulgarian Split Squat", "Clean", "Deadlift", "Donkey Kick", "Dumbell Lunge", "Dumbell RDL", "Glute Ham Raise", "Good Morning", "Hip Thrust", "Leg Curl", "Lunge", "Lying Leg Curl", "Romanian Deadlift", "Sled Push", "Snatch", "Stiff Leg Deadlift", "Sumo Deadlift"]
+    },
+    {
+        "name" : "Glutes",
+        "exerciseTypes" : ["Barbell Back Squat", "Barberll Front Squat", "Barbell Lunge", "Barbell RDL", "Bulgarian Split Squat", "Clean", "Deadlift", "Donkey Kick", "Dumbell Lunge", "Dumbell RDL", "Glute Ham Raise", "Good Morning", "Hip Abductor", "Hip Adductor", "Hip Thrust", "Leg Press", "Lunge", "Romanian Deadlift", "Single-leg Leg Press", "Sitting Leg Press", "Sled Push", "Sled Push", "Snatch", "Stiff Leg Deadlift", "Sumo Deadlift"]
+    },
+    {
+        "name" : "Calves",
+        "exerciseTypes" : ["Barbell Lunge", "Calf Raises", "Dumbell Lunge", "Sled Push"]
+    },
+    {
+        "name" : "Other",
+        "exerciseTypes" : []
     }
 }
