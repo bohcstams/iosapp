@@ -9,7 +9,6 @@ import Foundation
 import CoreLocation
 
 class TrainingsViewModel:ObservableObject{
-    @Published var trainings = [Training]()
     @Published var date = Date.now
     var locationManager = LocationManager()
     var location : CLLocation?
@@ -23,7 +22,9 @@ class TrainingsViewModel:ObservableObject{
         locationManager.startLocationManager()
         training.latitude = location?.coordinate.latitude ?? 0.0
         training.longitude = location?.coordinate.longitude ?? 0.0
-        trainings.append(training)
+        Task{
+            await TrainingManarger.shared.storeTraining(training: training)
+        }
     }
 }
 

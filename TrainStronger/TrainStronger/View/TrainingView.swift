@@ -77,7 +77,7 @@ struct TrainingView: View {
                             }
                         }
                     }
-                    .navigationTitle("Log training")
+                    .navigationTitle(isEditable ? "Log training" : "\(training.name)")
                     .navigationBarTitleDisplayMode(.inline)
                 }
                 

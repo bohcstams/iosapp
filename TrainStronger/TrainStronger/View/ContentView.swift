@@ -11,6 +11,7 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
+    @Query private var trainings: [Training]
     @ObservedObject var viewModel = TrainingsViewModel()
     
     var formattedDate: String {
@@ -21,7 +22,7 @@ struct ContentView: View {
     
     var filteredTrainings : [Training] {
         var filteredTrainings : [Training] = []
-        for training in viewModel.trainings{
+        for training in trainings{
             if areDatesEqual(training.date, viewModel.date){
                 filteredTrainings.append(training)
             }

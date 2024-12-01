@@ -13,6 +13,9 @@ struct TrainStrongerApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
+            Set.self,
+            Exercise.self,
+            Training.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -22,11 +25,17 @@ struct TrainStrongerApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+    @Environment(\.scenePhase) var scenePhase
 
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        .onChange(of: scenePhase) { oldState, newState in
+            if newState == .active {
+                TrainingManarger.shared.modelContainer = sharedModelContainer
+            }
+        }
     }
 }
