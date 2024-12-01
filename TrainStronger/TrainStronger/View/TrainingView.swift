@@ -131,7 +131,7 @@ struct TrainingView: View {
             }
         }
         .frame(width: 300, height: 250)
-        .background(Color.white)
+        .background(.background)
         .cornerRadius(20)
         .shadow(radius: 10)
         .overlay(
