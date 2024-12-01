@@ -26,10 +26,14 @@ struct TrainStrongerApp: App {
         }
     }()
     @Environment(\.scenePhase) var scenePhase
+    @State private var deepLink: String?
 
     var body: some Scene {
         WindowGroup {
             ContentView()
+            .onOpenURL { url in
+                deepLink = url.host
+            }
         }
         .modelContainer(sharedModelContainer)
         .onChange(of: scenePhase) { oldState, newState in

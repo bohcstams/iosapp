@@ -13,6 +13,7 @@ struct ContentView: View {
     @Query private var items: [Item]
     @Query private var trainings: [Training]
     @ObservedObject var viewModel = TrainingsViewModel()
+    @State var deepLink: String?
     
     var formattedDate: String {
         let formatter = DateFormatter()
@@ -59,6 +60,12 @@ struct ContentView: View {
             TabView{
                 VStack{
                     CalendarView(selectedDate: $viewModel.date)
+                    NavigationLink(destination: TrainingView(onFinish: viewModel.addTraining, date: viewModel.date),isActive: Binding(
+                        get: { deepLink == "newtraining" },
+                        set: { if !$0 { deepLink = nil } }
+                    )){
+                        EmptyView()
+                    }
                     NavigationLink{
                         TrainingView(onFinish: viewModel.addTraining, date: viewModel.date)
                     } label : {
@@ -100,6 +107,9 @@ struct ContentView: View {
                     }
                     .environmentObject(viewModel)
             }
+        }
+        .onOpenURL { url in
+            deepLink = url.host
         }
         
     }

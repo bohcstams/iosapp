@@ -6,19 +6,89 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B3D029E22CFCE88A00ABB16D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D029E12CFCE88A00ABB16D /* WidgetKit.framework */; };
+		B3D029E42CFCE88A00ABB16D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D029E32CFCE88A00ABB16D /* SwiftUI.framework */; };
+		B3D029EF2CFCE88C00ABB16D /* HomeScreenWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B3D029DF2CFCE88A00ABB16D /* HomeScreenWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B3D029ED2CFCE88C00ABB16D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3FA57252CFA32B800797EDD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3D029DE2CFCE88A00ABB16D;
+			remoteInfo = HomeScreenWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B3D029F02CFCE88C00ABB16D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B3D029EF2CFCE88C00ABB16D /* HomeScreenWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		B3D029DF2CFCE88A00ABB16D /* HomeScreenWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HomeScreenWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3D029E12CFCE88A00ABB16D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		B3D029E32CFCE88A00ABB16D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		B3FA572D2CFA32B800797EDD /* TrainStronger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainStronger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B3D029F32CFCE88C00ABB16D /* Exceptions for "HomeScreenWidget" folder in "HomeScreenWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B3D029DE2CFCE88A00ABB16D /* HomeScreenWidgetExtension */;
+		};
+		B3D029F82CFCEE9600ABB16D /* Exceptions for "TrainStronger" folder in "TrainStronger" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B3FA572C2CFA32B800797EDD /* TrainStronger */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		B3D029E52CFCE88A00ABB16D /* HomeScreenWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B3D029F32CFCE88C00ABB16D /* Exceptions for "HomeScreenWidget" folder in "HomeScreenWidgetExtension" target */,
+			);
+			path = HomeScreenWidget;
+			sourceTree = "<group>";
+		};
 		B3FA572F2CFA32B800797EDD /* TrainStronger */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B3D029F82CFCEE9600ABB16D /* Exceptions for "TrainStronger" folder in "TrainStronger" target */,
+			);
 			path = TrainStronger;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B3D029DC2CFCE88A00ABB16D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3D029E42CFCE88A00ABB16D /* SwiftUI.framework in Frameworks */,
+				B3D029E22CFCE88A00ABB16D /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B3FA572A2CFA32B800797EDD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -29,9 +99,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B3D029E02CFCE88A00ABB16D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3D029E12CFCE88A00ABB16D /* WidgetKit.framework */,
+				B3D029E32CFCE88A00ABB16D /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B3FA57242CFA32B800797EDD = {
 			isa = PBXGroup;
 			children = (
+				B3D029E52CFCE88A00ABB16D /* HomeScreenWidget */,
+				B3D029E02CFCE88A00ABB16D /* Frameworks */,
 				B3FA572E2CFA32B800797EDD /* Products */,
 				B3FA572F2CFA32B800797EDD /* TrainStronger */,
 			);
@@ -41,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				B3FA572D2CFA32B800797EDD /* TrainStronger.app */,
+				B3D029DF2CFCE88A00ABB16D /* HomeScreenWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +130,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B3D029DE2CFCE88A00ABB16D /* HomeScreenWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3D029F42CFCE88C00ABB16D /* Build configuration list for PBXNativeTarget "HomeScreenWidgetExtension" */;
+			buildPhases = (
+				B3D029DB2CFCE88A00ABB16D /* Sources */,
+				B3D029DC2CFCE88A00ABB16D /* Frameworks */,
+				B3D029DD2CFCE88A00ABB16D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B3D029E52CFCE88A00ABB16D /* HomeScreenWidget */,
+			);
+			name = HomeScreenWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = HomeScreenWidgetExtension;
+			productReference = B3D029DF2CFCE88A00ABB16D /* HomeScreenWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B3FA572C2CFA32B800797EDD /* TrainStronger */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3FA573D2CFA32BB00797EDD /* Build configuration list for PBXNativeTarget "TrainStronger" */;
@@ -55,10 +159,12 @@
 				B3FA57292CFA32B800797EDD /* Sources */,
 				B3FA572A2CFA32B800797EDD /* Frameworks */,
 				B3FA572B2CFA32B800797EDD /* Resources */,
+				B3D029F02CFCE88C00ABB16D /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B3D029EE2CFCE88C00ABB16D /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				B3FA572F2CFA32B800797EDD /* TrainStronger */,
@@ -80,6 +186,9 @@
 				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					B3D029DE2CFCE88A00ABB16D = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					B3FA572C2CFA32B800797EDD = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -100,11 +209,19 @@
 			projectRoot = "";
 			targets = (
 				B3FA572C2CFA32B800797EDD /* TrainStronger */,
+				B3D029DE2CFCE88A00ABB16D /* HomeScreenWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B3D029DD2CFCE88A00ABB16D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B3FA572B2CFA32B800797EDD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +232,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B3D029DB2CFCE88A00ABB16D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B3FA57292CFA32B800797EDD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,7 +248,69 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B3D029EE2CFCE88C00ABB16D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3D029DE2CFCE88A00ABB16D /* HomeScreenWidgetExtension */;
+			targetProxy = B3D029ED2CFCE88C00ABB16D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		B3D029F12CFCE88C00ABB16D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 43453V4KK3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HomeScreenWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HomeScreenWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.TrainStronger.HomeScreenWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B3D029F22CFCE88C00ABB16D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 43453V4KK3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HomeScreenWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HomeScreenWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.bme.aut.TrainStronger.HomeScreenWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B3FA573B2CFA32BB00797EDD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -255,6 +441,7 @@
 				DEVELOPMENT_TEAM = 43453V4KK3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TrainStronger/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "In order to record where you do your trainings, we need you to share your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -289,6 +476,7 @@
 				DEVELOPMENT_TEAM = 43453V4KK3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TrainStronger/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "In order to record where you do your trainings, we need you to share your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -315,6 +503,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B3D029F42CFCE88C00ABB16D /* Build configuration list for PBXNativeTarget "HomeScreenWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3D029F12CFCE88C00ABB16D /* Debug */,
+				B3D029F22CFCE88C00ABB16D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B3FA57282CFA32B800797EDD /* Build configuration list for PBXProject "TrainStronger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
