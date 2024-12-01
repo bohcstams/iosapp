@@ -86,7 +86,7 @@ struct ContentView: View {
                                 }
                             }
                         }
-                        //.onDelete(perform: deleteTraining)
+                        .onDelete(perform: deleteTraining)
                     }
                     .listStyle(.sidebar)
                 }
@@ -105,7 +105,11 @@ struct ContentView: View {
     }
     
     private func deleteTraining(offsets: IndexSet){
-        
+        withAnimation{
+            for index in offsets{
+                viewModel.deleteTraining(filteredTrainings[index])
+            }
+        }
     }
 
     private func addItem() {

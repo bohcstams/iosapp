@@ -22,4 +22,9 @@ class TrainingManarger{
     func storeTraining(training: Training){
         modelContainer?.mainContext.insert(training)
     }
+    
+    @MainActor
+    func deleteTraining(training: Training){
+        modelContainer?.mainContext.delete(training)
+    }
 }

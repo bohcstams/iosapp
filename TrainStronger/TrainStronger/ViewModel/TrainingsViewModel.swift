@@ -26,6 +26,12 @@ class TrainingsViewModel:ObservableObject{
             await TrainingManarger.shared.storeTraining(training: training)
         }
     }
+    
+    func deleteTraining(_ training : Training){
+        Task{
+            await TrainingManarger.shared.deleteTraining(training: training)
+        }
+    }
 }
 
 extension TrainingsViewModel : LocationObserver {
