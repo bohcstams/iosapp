@@ -6,24 +6,44 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddExerciseView: View {
-    let groups : [MuscleGroup] = [
-        MuscleGroup(name: "Back", types: ["Lat pulldown", "Pullups"]),
-        MuscleGroup(name: "Shoulders", types: ["Arnold Press","Cable Front Raise","Cable Lateral Raise","Cable Rear Delt Fly","Dumbell shoulder press", "Lateral raises"]),
-        MuscleGroup(name: "Chest", types: ["Bench press", "Peck deck"]),
-    ]
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \MuscleGroup.name, order: .forward) private var muscleGroups : [MuscleGroup]
+    @State private var searchText = ""
+    
+    var groupsFiltered : [MuscleGroup] {
+        if searchText.isEmpty{
+            return muscleGroups
+        }
+        else{
+            return muscleGroups.compactMap { group in
+                let filteredTypes = group.exerciseTypes.filter { type in
+                    type.type.contains(searchText)
+                }
+                if !filteredTypes.isEmpty {
+                    return MuscleGroup(name: group.name, types: filteredTypes.map { $0.type })
+                } else {
+                    return nil
+                }
+            }
+        }
+    }
     
     let onNewExercise : (String ) -> Void
         
     var body: some View {
         NavigationStack{
+            TextField("Search the name of exercise", text: $searchText)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
             List {
-                ForEach(groups) { muscleGroup in
+                ForEach(groupsFiltered) { muscleGroup in
                     DisclosureGroup(muscleGroup.name) {
-                        ForEach(muscleGroup.exerciseTypes, id: \.self) { exerciseType in
-                            Button(action: {onNewExercise(exerciseType)}){
-                                Text(exerciseType)
+                        ForEach(muscleGroup.exerciseTypes.sorted{ $0.type < $1.type }, id: \.self) { exerciseType in
+                            Button(action: {onNewExercise(exerciseType.type)}){
+                                Text(exerciseType.type)
                                     .foregroundColor(.primary)
                                     .padding(.leading)
                             }

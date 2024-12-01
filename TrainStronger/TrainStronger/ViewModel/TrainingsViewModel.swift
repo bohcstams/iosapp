@@ -23,13 +23,13 @@ class TrainingsViewModel:ObservableObject{
         training.latitude = location?.coordinate.latitude ?? 0.0
         training.longitude = location?.coordinate.longitude ?? 0.0
         Task{
-            await TrainingManarger.shared.storeTraining(training: training)
+            await TrainingManager.shared.storeTraining(training: training)
         }
     }
     
     func deleteTraining(_ training : Training){
         Task{
-            await TrainingManarger.shared.deleteTraining(training: training)
+            await TrainingManager.shared.deleteTraining(training: training)
         }
     }
 }

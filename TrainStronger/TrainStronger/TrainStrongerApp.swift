@@ -15,7 +15,9 @@ struct TrainStrongerApp: App {
             Item.self,
             Set.self,
             Exercise.self,
-            Training.self
+            Training.self,
+            MuscleGroup.self,
+            ExerciseType.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -34,11 +36,34 @@ struct TrainStrongerApp: App {
             .onOpenURL { url in
                 deepLink = url.host
             }
+            .onAppear{
+                insertInitialData()
+            }
         }
         .modelContainer(sharedModelContainer)
         .onChange(of: scenePhase) { oldState, newState in
             if newState == .active {
-                TrainingManarger.shared.modelContainer = sharedModelContainer
+                TrainingManager.shared.modelContainer = sharedModelContainer
+            }
+        }
+    }
+    
+    private func insertInitialData(){
+        let context = sharedModelContainer.mainContext
+                
+        if UserDefaults.standard.bool(forKey: "initialDataInserted") == false {
+            
+            if let url = Bundle.main.url(forResource: "InitialExercises", withExtension: "json") {
+                do {
+                    let data = try Data(contentsOf: url)
+                    let muscleGroups = try JSONDecoder().decode([MuscleGroupDTO].self, from: data)
+                    for group in muscleGroups {
+                        context.insert(MuscleGroup(name : group.name, types: group.exerciseTypes))
+                    }
+                    UserDefaults.standard.set(true, forKey: "initialDataInserted")
+                } catch {
+                    print("Failed to load or insert initial data: \(error)")
+                }
             }
         }
     }

@@ -8,11 +8,11 @@
 import Foundation
 import SwiftData
 
-class TrainingManarger{
+class TrainingManager{
     var modelContainer : ModelContainer?
     
-    static let shared : TrainingManarger = {
-        let instance = TrainingManarger()
+    static let shared : TrainingManager = {
+        let instance = TrainingManager()
         return instance
     }()
     

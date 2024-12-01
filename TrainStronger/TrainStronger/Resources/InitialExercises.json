@@ -1,4 +1,4 @@
-{
+[
     {
         "name" : "Shoulders",
         "exerciseTypes" : ["Arnold Press", "Cable Front Raise", "Cable Lateral Raise", "Cable Rear Delt Fly", "Cable Shoulder Press", "Clean & Press", "Dumbbell Front Raise", "Dumbbell Lateral Raise", "Dumbbell Real Delt Fly", "Dumbbell Shoulder Press", "Dumbbell Shrug", "Face Pull", "Lateral Raise Machine", "Military Press", "Push up", "Rear Delt Fly Machine", "Seated Lateral Raise", "Shoulder Press Machine", "Smith Machine Shoulder Press", "Smith Machine Shrug", "Three-way Lateral Raise", "Upright Row"]
@@ -47,4 +47,4 @@
         "name" : "Other",
         "exerciseTypes" : []
     }
-}
+]
