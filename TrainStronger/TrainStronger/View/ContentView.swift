@@ -14,6 +14,7 @@ struct ContentView: View {
     @Query private var trainings: [Training]
     @ObservedObject var viewModel = TrainingsViewModel()
     @State var deepLink: String?
+    @State private var isActive = false
     
     var formattedDate: String {
         let formatter = DateFormatter()
@@ -32,30 +33,6 @@ struct ContentView: View {
     }
 
     var body: some View {
-//        NavigationSplitView {
-//            List {
-//                ForEach(items) { item in
-//                    NavigationLink {
-//                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-//                    } label: {
-//                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-//                    }
-//                }
-//                .onDelete(perform: deleteItems)
-//            }
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    EditButton()
-//                }
-//                ToolbarItem {
-//                    Button(action: addItem) {
-//                        Label("Add Item", systemImage: "plus")
-//                    }
-//                }
-//            }
-//        } detail: {
-//            Text("Select an item")
-//        }
         NavigationStack{
             TabView{
                 VStack{
@@ -66,17 +43,24 @@ struct ContentView: View {
                     )){
                         EmptyView()
                     }
-                    NavigationLink{
-                        TrainingView(onFinish: viewModel.addTraining, date: viewModel.date)
-                    } label : {
+                    Button(action: {
+                        triggerHapticFeedback()
+                        self.isActive = true
+                    }) {
                         Text("Start new training")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                            .padding(.horizontal)
+                    }
+                    NavigationLink(
+                        destination: TrainingView(onFinish: viewModel.addTraining, date: viewModel.date),
+                        isActive: $isActive
+                    ) {
+                        EmptyView()
                     }
                     Text("Trainings on \(formattedDate):")
                         .font(.title3)
@@ -121,21 +105,12 @@ struct ContentView: View {
             }
         }
     }
-
-//    private func addItem() {
-//        withAnimation {
-//            let newItem = Item(timestamp: Date())
-//            modelContext.insert(newItem)
-//        }
-//    }
-
-//    private func deleteItems(offsets: IndexSet) {
-//        withAnimation {
-//            for index in offsets {
-//                modelContext.delete(items[index])
-//            }
-//        }
-//    }
+    
+    private func triggerHapticFeedback() {
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.prepare()
+        generator.impactOccurred()
+    }
     
     private func areDatesEqual(_ date1: Date, _ date2: Date) -> Bool {
         let calendar = Calendar.current

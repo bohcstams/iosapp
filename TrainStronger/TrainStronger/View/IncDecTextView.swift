@@ -30,6 +30,7 @@ struct IncDecTextView<T: Numeric & Comparable>: View {
             }
             TextField("0", text: $textValue)
                 .onChange(of: textValue) { newValue in
+                    let normalizedValue = newValue.replacingOccurrences(of: ",", with: ".")
                     if let newValue = convertToNumeric(newValue) {
                         value = newValue
                     }

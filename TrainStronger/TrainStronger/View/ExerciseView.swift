@@ -46,7 +46,8 @@ struct ExerciseView: View {
     }
     
     private func addNewSet(){
-        let newSet : Set = Set(weight: 0, reps: 0)
+        let lastSet = exercise.sets.last
+        let newSet : Set = Set(weight: lastSet?.weight ?? 0, reps: lastSet?.repetitions ?? 0)
         exercise.sets.append(newSet)
     }
     
