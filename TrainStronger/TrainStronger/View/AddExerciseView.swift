@@ -10,7 +10,7 @@ import SwiftUI
 struct AddExerciseView: View {
     let groups : [MuscleGroup] = [
         MuscleGroup(name: "Back", types: ["Lat pulldown", "Pullups"]),
-        MuscleGroup(name: "Shoulders", types: ["Dumbell shoulder press", "Lateral raises"]),
+        MuscleGroup(name: "Shoulders", types: ["Arnold Press","Cable Front Raise","Cable Lateral Raise","Cable Rear Delt Fly","Dumbell shoulder press", "Lateral raises"]),
         MuscleGroup(name: "Chest", types: ["Bench press", "Peck deck"]),
     ]
     
@@ -24,7 +24,7 @@ struct AddExerciseView: View {
                         ForEach(muscleGroup.exerciseTypes, id: \.self) { exerciseType in
                             Button(action: {onNewExercise(exerciseType)}){
                                 Text(exerciseType)
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.primary)
                                     .padding(.leading)
                             }
                         }

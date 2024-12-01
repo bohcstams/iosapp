@@ -1,0 +1,29 @@
+{
+    {
+        "name" : "Shoulders",
+        "exerciseTypes" : ["Arnold Press", "Cable Front Raise", "Cable Lateral Raise", "Cable Rear Delt Fly", "Cable Shoulder Press", "Clean & Press", "Dumbbell Front Raise", "Dumbbell Lateral Raise", "Dumbbell Real Delt Fly", "Dumbbell Shoulder Press", "Dumbbell Shrug", "Face Pull", "Lateral Raise Machine", "Military Press", "Push up", "Rear Delt Fly Machine", "Seated Lateral Raise", "Shoulder Press Machine", "Smith Machine Shoulder Press", "Smith Machine Shrug", "Three-way Lateral Raise", "Upright Row"]
+    },
+    {
+        "name" : "Back",
+        "exerciseTypes" : ["Bar Pullover", "Barbell Incline Row", "Barbell RDL", "Barbell Row", "Barbell Upright Row", "Cable Row", "Chest Supported Row", "Chin Up", "Clean & Press", "Deadlift", "Dumbbell One Arm Row", "Dumbbell RDL", "Dumbbell Row", "Farmer Carry", "Good Morning", "Hyperextension", "Incline Dumbbell Row", "Iso-lateral Pulldown", "Iso-lateral Row Machine", "Pendlay Row", "Pull Up", "Pulldown", "Romanian Deadlift", "Rope Pullover", "Seated Row Machine", "Single Arm Lat Pulldown", "Snatch", "Stiff Leg Deadlift", "Sumo Deadlift", "T-Bar Row", "Weighted Pullup"]
+    },
+    {
+        "name" : "Chest",
+        "exerciseTypes" : ["Barbell Bench Press", "Cable Chest Press", "Cable Crossover", "Cable Fly (high to low)", "Cable Fly (low to high)", "Close Grip Bench Press", "Decline Bench Press", "Decline Dumbbell Press", "Decline Smith Machine Bench", "Dips", "Dumbbell Fly", "Dumbbell Press", "Incline Bench Press", "Incline Cable Press", "Incline Dumbbell Fly", "Incline Dumbbell Press", "Incline Smith Machine Bench", "Iso-lateral Chest Press", "Pec Deck Machine", "Push Up", "Seated Chest Press Machine", "Weighted Dips"]
+    },
+    {
+        "name" : "Biceps",
+        "exerciseTypes" : ["Bar Cable Curl", "Barbell Bicep Curl", "Cable Curl", "Cable Hammer Curl", "Chin Up", "Concentration Curl", "Dumbbell Bicep Curl", "Dumbbell Preacher Curl", "EZ Bar Preacher Curl", "Face Away Cable Curl", "Hammer Curl", "Incline Dumbbell Curl", "Precher Curl Machine", "Rope Hammer Curl", "Spider Curl"]
+    },
+    {
+        "name" : "Triceps",
+        "exerciseTypes" : ["Bar Pushdown", "Barbell SkullCrusher", "Cable Kickback", "Cable Single Arm Extension", "Close Grip Bench Press", "Dips", "Dumbbell Kickback", "Dumbbell Skullcrusher", "Dumbbell Tricep Extension", "EZ Bar SkullCrusher", "Katana Extension", "Push Up", "Rope Overhead Extension", "Rope Pushdown", "Smith Machine JM Press", "Tricep Extesion", "Tricep Extension Single Arm", "Weighted Dips"]
+    },
+    {
+        "name" : "Forearms",
+        "exerciseTypes" : ["Reverse Barbell Curl", "Reverse Dumbbell Curl", "Wrist Curl"]
+    },
+    {
+        
+    }
+}
