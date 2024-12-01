@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ExerciseView: View {
     @Bindable var exercise : Exercise
+    let editable: Bool
     
     var body: some View {
         VStack{
@@ -24,19 +25,23 @@ struct ExerciseView: View {
             }
             ForEach(Array($exercise.sets.enumerated()), id: \.element.id) { index, $set in
                 HStack{
-                    SetView(reps: Double(set.repetitions), weight: set.weight)
-                    Button(action: {deleteSet(at: index)}){
-                        Image(systemName: "trash.fill")
-                        .foregroundColor(.red)
-                        .padding()
+                    SetView(set: set, editable: editable)
+                    if editable{
+                        Button(action: {deleteSet(at: index)}){
+                            Image(systemName: "trash.fill")
+                            .foregroundColor(.red)
+                            .padding()
+                        }
                     }
                 }
                 
             }
-            Button(action: addNewSet) {
-                Text("Add new set")
+            if editable {
+                Button(action: addNewSet) {
+                    Text("Add new set")
+                }
+                .padding(.top, 8)
             }
-            .padding(.top, 8)
         }
     }
     
@@ -56,6 +61,6 @@ struct ExerciseView_Previews : PreviewProvider{
         Set(weight: 12.5, reps: 5)
     ])
     static var previews: some View {
-        ExerciseView(exercise: exercise)
+        ExerciseView(exercise: exercise, editable: true)
     }
 }

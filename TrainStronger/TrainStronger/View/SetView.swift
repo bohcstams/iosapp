@@ -9,56 +9,24 @@ import SwiftUI
 
 struct SetView: View {
     
-    @State var repetitions: Double
-    @State var weight: Double
+    @Bindable var set : Set
+    let editable : Bool
     
-    init(reps: Double, weight: Double){
-        self.repetitions = reps
-        self.weight = weight
+    init(set : Set, editable : Bool){
+        self.set = set
+        self.editable = editable
     }
     
     var body: some View {
         HStack{
-            IncDecTextView(width: 30, amount: 1, value: $repetitions)
+            IncDecTextView(width: 30, amount: 1, editable: editable, value: $set.repetitions)
                 .padding(.trailing)
-            IncDecTextView(width: 50, amount: 2.5, value: $weight)
+            IncDecTextView(width: 50, amount: 2.5, editable: editable, value: $set.weight)
         }
         .padding(.horizontal)
-    }
-    
-    func formatDouble(_ value: Double) -> String {
-            return String(format: "%g", value)
-        }
-}
-
-struct EditSetView : View{
-    @Binding var repetitions : Int
-    @Binding var weight : Double
-    
-    var body: some View{
-        VStack {
-            Text("Edit set")
-                .font(.headline)
-                .padding()
-            
-            
-            Text("Tap anywhere outside to close.")
-                .padding(.bottom)
-        }
-        .frame(width: 250, height: 150)
-        .background(Color.white)
-        .cornerRadius(12)
-        .shadow(radius: 10)
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.gray, lineWidth: 1)
-        )
-        .onTapGesture {
-        }
-        
     }
 }
 
 #Preview {
-    SetView(reps: 15, weight: 95)
+    SetView(set: Set(weight: 0, reps: 0), editable: true)
 }

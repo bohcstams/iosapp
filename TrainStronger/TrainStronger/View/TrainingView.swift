@@ -13,10 +13,18 @@ struct TrainingView: View {
     @State var isNewExercisePresented : Bool = false
     @State var isPopUpShowed : Bool = false
     let onFinish: (Training) -> Void
+    let isEditable: Bool
     
-    init(onFinish : @escaping (Training) -> Void, date : Date){
+    init(onFinish: @escaping (Training) -> Void, date : Date){
+        self.training = Training(date: date)
         self.onFinish = onFinish
-        self.training = Training(date: date, exercises: [])
+        self.isEditable = true
+    }
+    
+    init(for training : Training) {
+        self.onFinish = {_ in }
+        self.training = training
+        self.isEditable = false
     }
     
     var body: some View {
@@ -41,27 +49,31 @@ struct TrainingView: View {
                     ScrollView{
                         ForEach(Array($training.exercises.enumerated()), id: \.element.id){ index, $exercise in
                             VStack{
-                                ExerciseView(exercise: exercise)
-                                Button(action: {deleteExercise(at: index)}){
-                                    Text("Delete exercise")
-                                        .foregroundColor(.red)
+                                ExerciseView(exercise: exercise, editable: isEditable)
+                                if isEditable{
+                                    Button(action: {deleteExercise(at: index)}){
+                                        Text("Delete exercise")
+                                            .foregroundColor(.red)
+                                    }
+                                    .padding()
                                 }
-                                .padding()
                                 Divider()
                             }
                         }
                     }
                     .toolbar{
-                        ToolbarItem{
-                            Button(action: {isNewExercisePresented = true}) {
-                                Label("Add Exercise", systemImage: "plus")
+                        if isEditable{
+                            ToolbarItem{
+                                Button(action: {isNewExercisePresented = true}) {
+                                    Label("Add Exercise", systemImage: "plus")
+                                }
                             }
-                        }
-                        ToolbarItem{
-                            Button(action: {
-                                isPopUpShowed = true
-                            }){
-                                Text("Finish")
+                            ToolbarItem{
+                                Button(action: {
+                                    isPopUpShowed = true
+                                }){
+                                    Text("Finish")
+                                }
                             }
                         }
                     }
@@ -130,5 +142,5 @@ struct TrainingView: View {
 }
 
 #Preview {
-    TrainingView(onFinish: {_ in}, date : Date.now)
+    TrainingView(onFinish: {_ in}, date: Date.now)
 }

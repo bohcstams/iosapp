@@ -11,19 +11,18 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
-    @State var date : Date = Date()
-    @State var trainings : [Training] = []
+    @ObservedObject var viewModel = TrainingsViewModel()
     
     var formattedDate: String {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
-        return formatter.string(from: date)
+        return formatter.string(from: viewModel.date)
     }
     
     var filteredTrainings : [Training] {
         var filteredTrainings : [Training] = []
-        for training in trainings{
-            if training.date == date{
+        for training in viewModel.trainings{
+            if areDatesEqual(training.date, viewModel.date){
                 filteredTrainings.append(training)
             }
         }
@@ -56,39 +55,56 @@ struct ContentView: View {
 //            Text("Select an item")
 //        }
         NavigationStack{
-            VStack{
-                CalendarView(selectedDate: $date)
-                NavigationLink{
-                    TrainingView(onFinish: addTraining, date: date)
-                } label : {
-                    Text("Start new training")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                }
-                Text("Trainings on \(formattedDate):")
-                    .font(.title3)
-                    .padding(.top)
-                List(filteredTrainings){ training in
-                    VStack{
-                        Text("\(training.name)")
-                        Divider()
-                        Text("Number of exercises: \(training.exercises.count)")
-                            .font(.caption)
+            TabView{
+                VStack{
+                    CalendarView(selectedDate: $viewModel.date)
+                    NavigationLink{
+                        TrainingView(onFinish: viewModel.addTraining, date: viewModel.date)
+                    } label : {
+                        Text("Start new training")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
                     }
+                    Text("Trainings on \(formattedDate):")
+                        .font(.title3)
+                        .padding(.top)
+                    List{
+                        ForEach(filteredTrainings){ training in
+                            NavigationLink{
+                                TrainingView(for: training)
+                            } label: {
+                                VStack(alignment: .leading){
+                                    Text("\(training.name)")
+                                    Text("Number of exercises: \(training.exercises.count)")
+                                        .font(.caption)
+                                }
+                            }
+                        }
+                        //.onDelete(perform: deleteTraining)
+                    }
+                    .listStyle(.sidebar)
                 }
-                .listStyle(.sidebar)
+                .tabItem {
+                    Label("List", systemImage: "chart.bar.doc.horizontal.fill")
+                }
+                
+                MapTabView()
+                    .tabItem {
+                        Label("Map", systemImage: "map.fill")
+                    }
+                    .environmentObject(viewModel)
             }
         }
         
     }
     
-    private func addTraining(_ training : Training){
-        trainings.append(training)
+    private func deleteTraining(offsets: IndexSet){
+        
     }
 
     private func addItem() {
@@ -104,6 +120,17 @@ struct ContentView: View {
                 modelContext.delete(items[index])
             }
         }
+    }
+    
+    private func areDatesEqual(_ date1: Date, _ date2: Date) -> Bool {
+        let calendar = Calendar.current
+        
+        let components1 = calendar.dateComponents([.year, .month, .day], from: date1)
+        let components2 = calendar.dateComponents([.year, .month, .day], from: date2)
+        
+        return components1.year == components2.year &&
+               components1.month == components2.month &&
+               components1.day == components2.day
     }
 }
 
