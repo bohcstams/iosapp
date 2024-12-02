@@ -82,7 +82,7 @@ struct ContentView: View {
                     .listStyle(.sidebar)
                 }
                 .tabItem {
-                    Label("List", systemImage: "chart.bar.doc.horizontal.fill")
+                    Label("Trainings", systemImage: "figure.run.square.stack.fill")
                 }
                 
                 MapTabView()
